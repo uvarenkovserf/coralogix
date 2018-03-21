@@ -26,7 +26,7 @@ def send_logs_to_coralogix():
         'applicationName': settings.CORALOGIX_APP_NAME,
         'subsystemName': 'TEST',
         'logEntries': [{
-            'timestamp': timestamp,
+            'timestamp': timestamp * 1000,
             'severity': LOG_LEVELS[level],
             'text': text
         } for level, text, timestamp in entries]
