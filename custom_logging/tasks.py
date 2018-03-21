@@ -20,6 +20,8 @@ def send_logs_to_coralogix():
     for log_buffer in LogsBuffer.objects.all():
         for entry in log_buffer.log:
             entries.append((log_buffer.level, entry[0], entry[1]))
+        log_buffer.log = []
+        log_buffer.save()
 
     body = {
         'privateKey': settings.CORALIGIX_KEY,
